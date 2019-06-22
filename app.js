@@ -18,10 +18,11 @@ const ec2 = require('./aws-ec2-client')();
     // const res = {}
     const name = instance['Reservations'][0]['Instances'][0]['Tags'].find(el => el.Key === 'Name').Value
     console.log(`istance name: ${name}`)
+
     const volume = await ec2.waitForAsync('volumeAvailable', {
       'Filters':[
         {
-          'Name': 'instance-id',
+          'Name': 'tag:Name',
           'Values': [EC2_INSTANCE_ID]
         }
       ]
