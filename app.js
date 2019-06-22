@@ -14,15 +14,20 @@ const ec2 = require('./aws-ec2-client')();
       ]
     })
 
-    // const res = await ec2.waitForAsync('volumeAvailable', {
-    //   "status": "available",
-    //   "tag":{
-    //     "tag:Naner":""
-    //   }
-    // });
+
     // const res = {}
     const name = instance['Reservations'][0]['Instances'][0]['Tags'].find(el => el.Key === 'Name').Value
-    console.log(name)
+    console.log(`istance name: ${name}`)
+    const volume = await ec2.waitForAsync('volumeAvailable', {
+      'Filters':[
+        {
+          'Name': 'instance-id',
+          'Values': [EC2_INSTANCE_ID]
+        }
+      ]
+    });
+    const volume_name = volume['Reservations'][0]['Instances'][0]['Tags'].find(el => el.Key === 'Name').Value
+    console.log(`istance name: ${volume_name}`)
     process.exit(0)
 
   } catch(err) {
