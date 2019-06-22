@@ -12,7 +12,7 @@ function addAsyncMethods(obj, methods){
     })
 }
 
-addAsyncMethods(ec2, ["waitFor"])
+addAsyncMethods(ec2, ["waitFor","attachVolume"])
 
 module.exports = function(){
   return ec2

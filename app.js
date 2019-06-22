@@ -32,8 +32,15 @@ const ec2 = require('./aws-ec2-client')();
     const volume_id = volume["Volumes"][0]["VolumeId"]
     console.log(`valume name/id: ${volume_name} / ${volume_id}`)
 
+    const device = "/dev/sdz"
 
+    const attach = await ec2.waitForAsync('volumeAvailable', {
+      Device: device,
+      InstanceId: EC2_INSTANCE_ID,
+      VolumeId: volume_id
+    })
 
+    console.log(`SUCCESS: EC2_INSTANCE_ID successfully attacched in ${device}`)
 
     process.exit(0)
 
