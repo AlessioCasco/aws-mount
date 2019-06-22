@@ -21,7 +21,8 @@ const ec2 = require('./aws-ec2-client')();
     //   }
     // });
     // const res = {}
-    console.log(instance['Reservations'][0]['Instances'][0]['Tags'])
+    const name = instance['Reservations'][0]['Instances'][0]['Tags'].find(el => el.Key === 'Name').Value
+    console.log(name)
     process.exit(0)
 
   } catch(err) {
