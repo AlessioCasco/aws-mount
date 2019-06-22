@@ -23,7 +23,7 @@ const ec2 = require('./aws-ec2-client')();
       'Filters':[
         {
           'Name': 'tag:Name',
-          'Values': [EC2_INSTANCE_ID]
+          'Values': [name]
         }
       ]
     });
