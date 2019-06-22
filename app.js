@@ -37,7 +37,8 @@ const ec2 = require('./aws-ec2-client')();
     const attach = await ec2.attachVolume({
       Device: device,
       InstanceId: EC2_INSTANCE_ID,
-      VolumeId: volume_id
+      VolumeId: volume_id,
+      DryRun: false
     })
 
     console.log(`SUCCESS: EC2_INSTANCE_ID successfully attacched in ${device}`)
