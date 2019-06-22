@@ -21,7 +21,7 @@ const ec2 = require('./aws-ec2-client')();
     //   }
     // });
     // const res = {}
-    console.log(instance['Reservations'][0]['Instances']['Tags'])
+    console.log(instance['Reservations'][0]['Instances'])
     process.exit(0)
 
   } catch(err) {
