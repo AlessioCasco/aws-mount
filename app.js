@@ -29,9 +29,10 @@ const ec2 = require('./aws-ec2-client')();
     });
     // const volume_name = volume['Reservations'][0]['Instances'][0]['Tags'].find(el => el.Key === 'Name').Value
     const volume_name = volume["Volumes"][0]["Tags"].find((el) => el.Key ==="Name" ).Value
-    console.log(`valume name: ${volume_name}`)
+    const volume_id = volume["Volumes"][0]["VolumeId"]
+    console.log(`valume name/id: ${volume_name} / ${volume_id}`)
 
-  
+
 
 
     process.exit(0)
