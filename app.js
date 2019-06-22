@@ -34,7 +34,7 @@ const ec2 = require('./aws-ec2-client')();
 
     const device = "/dev/sdf"
 
-    const attach = await ec2.attachVolume({
+    const attach = await ec2.attachVolumeAsync({
       Device: device,
       InstanceId: EC2_INSTANCE_ID,
       VolumeId: volume_id,
