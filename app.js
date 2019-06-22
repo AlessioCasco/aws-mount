@@ -29,7 +29,7 @@ const ec2 = require('./aws-ec2-client')();
     });
     // const volume_name = volume['Reservations'][0]['Instances'][0]['Tags'].find(el => el.Key === 'Name').Value
     const volume_name = volume
-    console.log(`valume name: ${Object.stringify(volume_name, '  ', '  ')}`)
+    console.log(`valume name: ${JSON.stringify(volume_name, '  ', '  ')}`)
     process.exit(0)
 
   } catch(err) {
