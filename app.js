@@ -6,7 +6,12 @@ const ec2 = require('./aws-ec2-client')();
 
   try {
     const instance = await ec2.waitForAsync('instanceRunning',{
-      'instance-id': EC2_INSTANCE_ID
+      'Filters':[
+        {
+          'Name': 'instance-id',
+          'Values': [EC2_INSTANCE_ID]
+        }
+      ]
     })
 
     // const res = await ec2.waitForAsync('volumeAvailable', {
